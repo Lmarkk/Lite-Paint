@@ -1,6 +1,7 @@
 package fi.lmarkk.litepaint;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.graphics.Bitmap;
@@ -66,5 +67,11 @@ public class PaintingView extends View {
         }
         invalidate();
         return true;
+    }
+
+    public void setColor(String newColor) {
+        invalidate();
+        paintColor = Color.parseColor(newColor);
+        drawPaint.setColor(paintColor);
     }
 }
