@@ -44,4 +44,27 @@ public class PaintingView extends View {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float touchX = event.getX();
+        float touchY = event.getY();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                drawPath.moveTo(touchX, touchY);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                drawPath.lineTo(touchX, touchY);
+                break;
+            case MotionEvent.ACTION_UP:
+                drawCanvas.drawPath(drawPath, drawPaint);
+                drawPath.reset();
+                break;
+            default:
+                return false;
+        }
+        invalidate();
+        return true;
+    }
 }
