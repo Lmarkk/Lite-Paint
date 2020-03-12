@@ -19,4 +19,11 @@ public class MainActivity extends AppCompatActivity {
         currentPaint = (ImageButton)paintLayout.getChildAt(0);
         currentPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
     }
+
+    public void paintClicked(View view){
+        if(view != currentPaint){
+            ImageButton imageView = (ImageButton)view;
+            String color = view.getTag().toString();
+        }
+    }
 }
