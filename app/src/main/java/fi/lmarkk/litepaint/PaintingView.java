@@ -19,6 +19,7 @@ public class PaintingView extends View {
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setupDrawing();
     }
 
     private void setupDrawing() {
