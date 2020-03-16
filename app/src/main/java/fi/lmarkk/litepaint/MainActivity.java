@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     private PaintingView paintingView;
-    private ImageButton currentPaint;
+    private ImageButton currentPaint,  drawButton;
     private float smallBrush, mediumBrush, largeBrush;
 
     @Override
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
+        drawButton = (ImageButton)findViewById(R.id.draw_button);
     }
 
     public void paintClicked(View view){
