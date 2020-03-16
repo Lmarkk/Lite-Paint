@@ -87,4 +87,12 @@ public class PaintingView extends View {
         brushSize = pixelAmount;
         drawPaint.setStrokeWidth(brushSize);
     }
+
+    public void setLastBrushSize(float lastSize) {
+        lastBrushSize=  lastSize;
+    }
+
+    public float getLastBrushSize() {
+        return lastBrushSize;
+    }
 }
