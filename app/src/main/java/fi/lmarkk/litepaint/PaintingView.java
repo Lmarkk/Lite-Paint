@@ -2,6 +2,8 @@ package fi.lmarkk.litepaint;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -18,6 +20,7 @@ public class PaintingView extends View {
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
+    private boolean erase = false;
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -94,5 +97,14 @@ public class PaintingView extends View {
 
     public float getLastBrushSize() {
         return lastBrushSize;
+    }
+
+    public void setErase(boolean isErase) {
+        erase = isErase;
+        if(erase) {
+            drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        } else {
+            drawPaint.setXfermode(null);
+        }
     }
 }
