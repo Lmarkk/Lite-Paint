@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
         drawButton = (ImageButton)findViewById(R.id.draw_button);
+        paintingView.setBrushSize(mediumBrush);
     }
 
     public void paintClicked(View view) {
