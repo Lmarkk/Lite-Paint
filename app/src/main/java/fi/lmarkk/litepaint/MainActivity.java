@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view.getId() == R.id.draw_button) {
             final Dialog brushDialog = new Dialog(this);
             brushDialog.setTitle("Brush size:");
+            brushDialog.setContentView(R.layout.brush_chooser);
         }
     }
 }
