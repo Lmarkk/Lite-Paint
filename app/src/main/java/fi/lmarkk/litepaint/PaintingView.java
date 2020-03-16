@@ -3,6 +3,7 @@ package fi.lmarkk.litepaint;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -77,5 +78,13 @@ public class PaintingView extends View {
         invalidate();
         paintColor = Color.parseColor(newColor);
         drawPaint.setColor(paintColor);
+    }
+
+    public void setBrushSize(float newSize) {
+        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                newSize, getResources().getDisplayMetrics());
+
+        brushSize = pixelAmount;
+        drawPaint.setStrokeWidth(brushSize);
     }
 }
