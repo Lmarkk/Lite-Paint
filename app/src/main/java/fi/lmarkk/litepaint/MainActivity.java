@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
         currentPaint = (ImageButton)paintLayout.getChildAt(0);
         currentPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
+        smallBrush = getResources().getInteger(R.integer.small_size);
+        mediumBrush = getResources().getInteger(R.integer.medium_size);
+        largeBrush = getResources().getInteger(R.integer.large_size);
     }
 
     public void paintClicked(View view){
