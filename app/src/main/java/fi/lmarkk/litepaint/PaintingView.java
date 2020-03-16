@@ -16,6 +16,7 @@ public class PaintingView extends View {
     private int paintColor = 0xFF660000;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
+    private float brushSize, lastBrushSize;
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -23,6 +24,8 @@ public class PaintingView extends View {
     }
 
     private void setupDrawing() {
+        brushSize = getResources().getInteger(R.integer.medium_size);
+        lastBrushSize = brushSize;
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
