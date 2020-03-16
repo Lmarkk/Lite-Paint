@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             smallButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    paintingView.setErase(false);
                     paintingView.setBrushSize(smallBrush);
                     paintingView.setLastBrushSize(smallBrush);
                     brushDialog.dismiss();
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mediumButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    paintingView.setErase(false);
                     paintingView.setBrushSize(mediumBrush);
                     paintingView.setLastBrushSize(mediumBrush);
                     brushDialog.dismiss();
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             largeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    paintingView.setErase(false);
                     paintingView.setBrushSize(largeBrush);
                     paintingView.setLastBrushSize(largeBrush);
                     brushDialog.dismiss();
