@@ -9,6 +9,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
     private PaintingView paintingView;
     private ImageButton currentPaint;
+    private float smallBrush, mediumBrush, largeBrush;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
