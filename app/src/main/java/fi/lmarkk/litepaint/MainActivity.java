@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     brushDialog.dismiss();
                 }
             });
+
+            brushDialog.show();
         }
     }
 }
