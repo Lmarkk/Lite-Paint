@@ -2,7 +2,9 @@ package fi.lmarkk.litepaint;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -123,6 +125,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
 
             brushDialog.show();
+        } else if(view.getId() == R.id.new_drawing_button){
+            AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
+            newDialog.setTitle("New drawing");
+            newDialog.setMessage("Start new drawing (you will lose the current drawing)?");
+            newDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int which){
+                    paintingView.startNew();
+                    dialog.dismiss();
+                }
+            });
+            newDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int which){
+                    dialog.cancel();
+                }
+            });
+            newDialog.show();
         }
     }
 }
