@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private PaintingView paintingView;
-    private ImageButton currentPaint,  drawButton, eraseButton;
+    private ImageButton currentPaint,  drawButton, eraseButton, newButton;
     private float smallBrush, mediumBrush, largeBrush;
 
     @Override
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
+        newButton = (ImageButton)findViewById(R.id.new_drawing_button);
+        newButton.setOnClickListener(this);
         drawButton = (ImageButton)findViewById(R.id.draw_button);
         drawButton.setOnClickListener(this);
         eraseButton = (ImageButton)findViewById(R.id.erase_button);
