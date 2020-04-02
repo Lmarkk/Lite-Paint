@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private PaintingView paintingView;
-    private ImageButton currentPaint,  drawButton, eraseButton, newButton;
+    private ImageButton currentPaint,  drawButton, eraseButton, newButton, saveButton;
     private float smallBrush, mediumBrush, largeBrush;
 
     @Override
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawButton.setOnClickListener(this);
         eraseButton = (ImageButton)findViewById(R.id.erase_button);
         eraseButton.setOnClickListener(this);
+        saveButton = (ImageButton)findViewById(R.id.save_button);
+        saveButton.setOnClickListener(this);
         paintingView.setBrushSize(mediumBrush);
     }
 
