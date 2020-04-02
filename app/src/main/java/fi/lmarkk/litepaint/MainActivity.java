@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
 
             brushDialog.show();
-        } else if(view.getId() == R.id.new_drawing_button){
+        } else if(view.getId() == R.id.new_drawing_button) {
             AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
             newDialog.setTitle("New drawing");
             newDialog.setMessage("Start new drawing (you will lose the current drawing)?");
@@ -143,6 +143,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             newDialog.show();
+        } else if(view.getId() == R.id.save_button) {
+            AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+            saveDialog.setTitle("Save drawing");
+            saveDialog.setMessage("Save drawing to device Gallery?");
+            saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int which){
+                    //save drawing
+                }
+            });
+            saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int which){
+                    dialog.cancel();
+                }
+            });
+            saveDialog.show();
         }
     }
 }
