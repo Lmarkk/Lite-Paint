@@ -107,4 +107,9 @@ public class PaintingView extends View {
             drawPaint.setXfermode(null);
         }
     }
+
+    public void startNew(){
+        drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
+    }
 }
