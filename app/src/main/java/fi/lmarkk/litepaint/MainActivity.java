@@ -21,42 +21,26 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
     private PaintingView paintingView;
-    private ImageButton currentPaint,  drawButton, eraseButton, newButton, saveButton;
+    private ImageButton drawButton, eraseButton, newButton, saveButton, colorPickerButton;
     private float smallBrush, mediumBrush, largeBrush;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        paintingView= (PaintingView) findViewById(R.id.painting_view);
-        LinearLayout paintLayout = (LinearLayout)findViewById(R.id.paint_colors);
-        currentPaint = (ImageButton)paintLayout.getChildAt(0);
-        currentPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
+        paintingView= findViewById(R.id.painting_view);
         smallBrush = getResources().getInteger(R.integer.small_size);
         mediumBrush = getResources().getInteger(R.integer.medium_size);
         largeBrush = getResources().getInteger(R.integer.large_size);
-        newButton = (ImageButton)findViewById(R.id.new_drawing_button);
+        newButton = findViewById(R.id.new_drawing_button);
         newButton.setOnClickListener(this);
-        drawButton = (ImageButton)findViewById(R.id.draw_button);
+        drawButton = findViewById(R.id.draw_button);
         drawButton.setOnClickListener(this);
-        eraseButton = (ImageButton)findViewById(R.id.erase_button);
+        eraseButton = findViewById(R.id.erase_button);
         eraseButton.setOnClickListener(this);
-        saveButton = (ImageButton)findViewById(R.id.save_button);
+        saveButton = findViewById(R.id.save_button);
         saveButton.setOnClickListener(this);
         paintingView.setBrushSize(mediumBrush);
-    }
-
-    public void paintClicked(View view) {
-        paintingView.setErase(false);
-        paintingView.setBrushSize(paintingView.getLastBrushSize());
-        if(view != currentPaint){
-            ImageButton imageView = (ImageButton)view;
-            String color = view.getTag().toString();
-            paintingView.setColor(color);
-            imageView.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
-            currentPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint));
-            currentPaint=(ImageButton)view;
-        }
     }
 
     @Override
@@ -88,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
 
-            ImageButton largeButton = (ImageButton)brushDialog.findViewById(R.id.large_brush);
+            ImageButton largeButton = brushDialog.findViewById(R.id.large_brush);
             largeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             brushDialog.setTitle("Eraser size:");
             brushDialog.setContentView(R.layout.brush_chooser);
 
-            ImageButton smallBtn = (ImageButton)brushDialog.findViewById(R.id.small_brush);
+            ImageButton smallBtn = brushDialog.findViewById(R.id.small_brush);
             smallBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -115,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
 
-            ImageButton mediumBtn = (ImageButton)brushDialog.findViewById(R.id.medium_brush);
+            ImageButton mediumBtn = brushDialog.findViewById(R.id.medium_brush);
             mediumBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -125,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
 
-            ImageButton largeBtn = (ImageButton)brushDialog.findViewById(R.id.large_brush);
+            ImageButton largeBtn = brushDialog.findViewById(R.id.large_brush);
             largeBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -170,7 +154,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     makeSaveDialog();
                 }
