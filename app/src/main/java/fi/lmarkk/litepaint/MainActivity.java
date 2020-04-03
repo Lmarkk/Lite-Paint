@@ -207,4 +207,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             saveDialog.show();
         }
     }
+
+    public void showColorPickerDialog(View v) {
+        ColorPickerDialogBuilder
+                .with(this)
+                .setTitle("Choose color")
+                .initialColor(paintingView.getPaintColor())
+                .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
+                .density(12)
+                .setOnColorSelectedListener(new OnColorSelectedListener() {
+                    @Override
+                    public void onColorSelected(int selectedColor) {}
+                })
+                .setPositiveButton("ok", new ColorPickerClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
+                        paintingView.setColor("#" + Integer.toHexString(selectedColor).toUpperCase());
+                    }
+                })
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                })
+                .build()
+                .show();
+    }
 }
