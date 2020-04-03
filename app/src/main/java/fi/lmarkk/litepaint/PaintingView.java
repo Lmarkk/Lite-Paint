@@ -16,7 +16,7 @@ import android.view.MotionEvent;
 public class PaintingView extends View {
     private Path drawPath;
     private Paint drawPaint, canvasPaint;
-    private int paintColor = 0xFF660000;
+    private int paintColor = 0xFF000000;
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
@@ -24,6 +24,7 @@ public class PaintingView extends View {
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
         setupDrawing();
     }
 
@@ -111,5 +112,9 @@ public class PaintingView extends View {
     public void startNew(){
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
+    }
+
+    public int getPaintColor() {
+        return paintColor;
     }
 }
