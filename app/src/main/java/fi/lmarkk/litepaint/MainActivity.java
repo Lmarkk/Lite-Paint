@@ -16,6 +16,11 @@ import android.widget.LinearLayout;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.flask.colorpicker.ColorPickerView;
+import com.flask.colorpicker.OnColorSelectedListener;
+import com.flask.colorpicker.builder.ColorPickerClickListener;
+import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
+
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eraseButton.setOnClickListener(this);
         saveButton = findViewById(R.id.save_button);
         saveButton.setOnClickListener(this);
+        colorPickerButton = findViewById(R.id.color_picker_button);
+        colorPickerButton.setOnClickListener(this);
         paintingView.setBrushSize(mediumBrush);
     }
 
@@ -147,6 +154,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 makeSaveDialog();
             }
+        } else if(view.getId() == R.id.color_picker_button) {
+            paintingView.setErase(false);
+            paintingView.setBrushSize(paintingView.getLastBrushSize());
+            showColorPickerDialog(view);
         }
     }
 
