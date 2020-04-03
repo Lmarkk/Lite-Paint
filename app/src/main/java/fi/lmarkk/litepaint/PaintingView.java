@@ -24,6 +24,7 @@ public class PaintingView extends View {
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
         setupDrawing();
     }
 
