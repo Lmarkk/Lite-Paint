@@ -23,6 +23,13 @@ import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
 import java.util.UUID;
 
+
+/**
+ * The main activity class which holds a PaintingView instance and methods for handling ui button clicks.
+ *
+ * @author Lassi Markkinen
+ * @version 2020.0419
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
     private PaintingView paintingView;
@@ -48,6 +55,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         colorPickerButton.setOnClickListener(this);
         paintingView.setBrushSize(mediumBrush);
     }
+
+    /**
+     * OnClick method for the main activity which uses a switch case to determine if an imagebutton
+     * is clicked.
+     *
+     * Depending on the button PaintingView methods can be called or in the case of the
+     * new drawing and save buttons, the user will be prompted with dialogs and if the color picker
+     * button is clicked the user will be presented with a color selector.
+     *
+     *
+     * @author Lassi Markkinen
+     * @param view The view which was clicked.
+     */
 
     @Override
     public void onClick(View view) {
@@ -168,6 +188,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Method that is called when the app request local storage permissions from the user.
+     *
+     * Simple if-clauses are used to check if permission was granted if and if affirmative a method
+     * is called prompting the user with a save dialog.
+     *
+     *
+     * @author Lassi Markkinen
+     * @param requestCode Code for the type of permission requested.
+     * @param permissions The requested permissions.
+     * @param grantResults The results for permissions being granted or denied.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) {
@@ -177,6 +209,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Method which writes the current image into local storage after checking permissions.
+     *
+     * First the method will check if the user has enabled storage writing permissions. The user
+     * is the prompted with a dialog to confirm whether they want to save the image. If the user
+     * affirms, PaintingView's current drawing cache is saved into local storage with a randomly
+     * name and png media type. If the returned image is not null, the user is notified with a toast
+     * and likewise if the operation fails the user is also notified of this.
+     *
+     *
+     * @author Lassi Markkinen
+     */
     private void makeSaveDialog() {
         if(ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -214,6 +258,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Method which displays a dialog for the user to select a paint color with.
+     *
+     * A ColorPickerDialog is built with a positive and negative button. when the "ok" button is
+     * clicked, the PaintingView.setColor method is called. the selectedColor field is converted
+     * from an int to a hexstring for this purpose. The negative button simply closes the dialog.
+     *
+     *
+     * @author Lassi Markkinen
+     * @param v the imagebutton used for accessing the color picker.
+     */
     public void showColorPickerDialog(View v) {
         ColorPickerDialogBuilder
                 .with(this)
