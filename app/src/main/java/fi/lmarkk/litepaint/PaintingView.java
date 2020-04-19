@@ -20,7 +20,6 @@ public class PaintingView extends View {
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
-    private boolean erase = false;
 
     public PaintingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -83,12 +82,9 @@ public class PaintingView extends View {
         paintColor = Color.parseColor(newColor);
         drawPaint.setColor(paintColor);
     }
-
     public void setBrushSize(float newSize) {
-        float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+        brushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 newSize, getResources().getDisplayMetrics());
-
-        brushSize = pixelAmount;
         drawPaint.setStrokeWidth(brushSize);
     }
 
@@ -101,8 +97,7 @@ public class PaintingView extends View {
     }
 
     public void setErase(boolean isErase) {
-        erase = isErase;
-        if(erase) {
+        if(isErase) {
             drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         } else {
             drawPaint.setXfermode(null);
