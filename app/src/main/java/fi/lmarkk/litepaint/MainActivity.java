@@ -189,9 +189,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Method that is called when the app request local storage permissions from the user.
+     * Method that is called when the app requests local storage permissions from the user.
      *
-     * Simple if-clauses are used to check if permission was granted if and if affirmative a method
+     * Simple if-clauses are used to check whether permission was granted and if affirmative a method
      * is called prompting the user with a save dialog.
      *
      *
@@ -213,10 +213,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Method which writes the current image into local storage after checking permissions.
      *
      * First the method will check if the user has enabled storage writing permissions. The user
-     * is the prompted with a dialog to confirm whether they want to save the image. If the user
+     * is then prompted with a dialog to confirm whether they want to save the image. If the user
      * affirms, PaintingView's current drawing cache is saved into local storage with a randomly
-     * name and png media type. If the returned image is not null, the user is notified with a toast
-     * and likewise if the operation fails the user is also notified of this.
+     * generated name and png media type. If the returned image is not null, the user is notified
+     * with a toast and likewise if the operation fails the user is also notified of this.
      *
      *
      * @author Lassi Markkinen
